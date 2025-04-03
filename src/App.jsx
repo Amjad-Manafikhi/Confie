@@ -10,6 +10,7 @@ import Layout from './Components/Layout.jsx';
 import Sign from './Components/Sign-in.jsx';
 import Shop from './Components/Shop.jsx';
 import photo from './HomeImage.jpg';
+import AuthRequired from './Components/AuthRequired.jsx';
 export default function App() {
   const products = [
     {
@@ -22,16 +23,16 @@ export default function App() {
     {
       imgSrc: './../HomeImage.jpg',
       price: "150",
-      name: "White Sofa",
-      description: "this is a comfortable good quality sofa",
-      type: "sofa"
+      name: "White Chair",
+      description: "this is a comfortable good quality chair",
+      type: "chair"
     },
     {
       imgSrc: './../HomeImage.jpg',
       price: "200",
-      name: "White Sofa",
-      description: "this is a comfortable good quality sofa",
-      type: "sofa"
+      name: "White Lamp",
+      description: "this is a comfortable good quality lamp",
+      type: "lamp"
     }
   ]
   return (
@@ -40,13 +41,15 @@ export default function App() {
         <Route path="/" element={<Layout />}>
 
           <Route index element={<Home />} />
-          <Route path="/shop" element={<Shop products={products} />} />
+          <Route element={<AuthRequired/>} >
+            <Route path="/shop" element={<Shop products={products} />} />
+          </Route>
           <Route path="/about" element={<></>} />
-
         </Route>
 
         <Route path="/login" element={<Sign />} />
         <Route path="/signup" element={<Sign />} />
+        <Route path="*" element={<h1>wrong url</h1>}/>
       </Routes>
     </>
   )

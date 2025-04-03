@@ -41,7 +41,7 @@ export default function Header(){
                 </NavLink>
                 
                 <NavLink
-                    to="/sign up"
+                    to="/signup"
                     className="sign-up"
                     
                     style={ ({isActive}) => isActive ? style : null } 

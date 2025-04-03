@@ -7,7 +7,9 @@
   
 }
 :root{
-  --beige:rgb(255, 212, 192);
+  /*--beige:rgb(255, 212, 192);/*/
+  --beige:white;
+
   --brown:#8B5E3B;
   --darkbrown:#3E2723;
   --green:#50862c;

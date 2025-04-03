@@ -12,19 +12,17 @@ export default function Shop({products}){
     const navigate=useNavigate();
     const location=useLocation();
     
-    function changePrice(event){    
-        const price=event.target.value
-        searchParams.set("price",price);
-        setSearchParams(searchParams)
-        
-        
+    function changePrice(event) {    
+        const price = event.target.value;
+        const newSearchParams = new URLSearchParams(searchParams);
+        newSearchParams.set("price", price);
+        setSearchParams(newSearchParams);
     }
-    function changeType(event){
-        const type=event.target.value
-        searchParams.set("type",type);
-        setSearchParams(searchParams)
-
-
+    function changeType(event) {
+        const type = event.target.value;
+        const newSearchParams = new URLSearchParams(searchParams);
+        newSearchParams.set("type", type);
+        setSearchParams(newSearchParams);
     }
     const s="White sofa";
     

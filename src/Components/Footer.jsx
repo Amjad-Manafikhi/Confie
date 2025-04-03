@@ -26,7 +26,7 @@ export default function Footer(){
                     Pages
                 </h1>
                 <>
-                <NavLink to="/home" className="footer-navlink ">Home</NavLink>
+                <NavLink to="/" className="footer-navlink ">Home</NavLink>
                 <NavLink to="/shop" className="footer-navlink "> Shop</NavLink>
                 <NavLink to="/about" className="footer-navlink "> About Us</NavLink>
 
