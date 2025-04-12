@@ -1,13 +1,14 @@
 import React from "react"
-import {NavLink,BrowserRouter} from "react-router-dom" 
+import {NavLink,BrowserRouter, useLocation} from "react-router-dom" 
 
 
 
 export default function Header(){
+
+    const location=useLocation();
     const style={
         color:"black",
         textDecoration:"none",
-        fontWeight:"800"
     }
     return(
         <div className="header">
@@ -37,14 +38,17 @@ export default function Header(){
                     to="/login"
                     className="log-in"
                     style={ ({isActive}) => isActive ? style : null } 
+                    state={{from:location.pathname + location.search}}
+                    replace
                     >LOG IN
                 </NavLink>
                 
                 <NavLink
                     to="/signup"
                     className="sign-up"
-                    
                     style={ ({isActive}) => isActive ? style : null } 
+                    state={{from:location.pathname + location.search}}
+                    replace
                     >SIGN UP
                 </NavLink>
                 

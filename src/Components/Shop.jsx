@@ -2,6 +2,8 @@ import React from "react"
 import photo from './../HomeImage.jpg';
 import Card from './card.jsx';
 import {useNavigate ,useSearchParams ,useLocation} from "react-router-dom"
+import FlipMove from 'react-flip-move';
+
 export default function Shop({products}){
    
     const [searchParams ,setSearchParams]=useSearchParams();
@@ -39,10 +41,16 @@ export default function Shop({products}){
     if (initialPrice === "HtoL") {
         sortedProducts = [...filteredProducts].reverse();
     }   
-    const elementProducts = sortedProducts.map((product ,index)=>
-        <Card key={index} imgSrc={product.imgSrc} price={product.price} name={product.name} description={product.description} />
-    ) 
-    console.log(filteredProducts);
+    const elementProducts = sortedProducts.map((product) => (
+            <div key={product.id}>
+                <Card 
+                    imgSrc={product.imgSrc} 
+                    price={product.price} 
+                    name={product.name} 
+                    description={product.description} 
+                />
+            </div>
+        ));
 
 
 
@@ -67,9 +75,15 @@ export default function Shop({products}){
                 </form>
             </div>
 
-            <div className="cards-container">
-                {elementProducts}           
-            </div>
+            <FlipMove
+                className="cards-container"
+                duration={500}
+                staggerDurationBy={0}
+                onStart={() => console.log("Animation started")}
+                onFinish={() => console.log("Animation finished")}
+            >
+                {elementProducts}       
+            </FlipMove> 
         </div>
     )
 }
