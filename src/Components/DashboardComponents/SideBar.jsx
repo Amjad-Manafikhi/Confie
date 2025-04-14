@@ -11,10 +11,10 @@ export default function SideBar(){
         <>
             <div className="sidebar">
                 <NavLink
-                        to="/dashboard"
-                        className="navLink"
-                        style={ ({isActive}) => isActive ? style : null } 
-                        >Products
+                    to="/dashboard"
+                    className="navLink"
+                    style={ ({isActive}) => isActive ? style : null } 
+                    >Products
                 </NavLink>
                 <NavLink    
                     to="analytics"

@@ -16,6 +16,7 @@ import Products from './Components/DashboardComponents/Products.jsx';
 import Analytics from './Components/DashboardComponents/Analytics.jsx';
 import GeneralInfo from './Components/DashboardComponents/GeneralInfo.jsx';
 import DashboardLayout from './Components/DashboardComponents/DashboardLayout.jsx';
+import About from './Components/About.jsx';
 export default function App() {
   const products = [
     {
@@ -93,7 +94,7 @@ export default function App() {
           <Route element={<AuthRequired/>} >
             <Route path="shop" element={<Shop products={products} />} />
           </Route>
-          <Route path="about" element={<></>} />
+          <Route path="about" element={<About />} />
         </Route>
 
         <Route path="login" element={<Login />} />

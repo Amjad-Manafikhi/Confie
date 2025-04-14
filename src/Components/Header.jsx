@@ -1,18 +1,42 @@
 import React from "react"
 import {NavLink,BrowserRouter, useLocation} from "react-router-dom" 
-
+import Hamburgers from './HamburgerButton.jsx';
 
 
 export default function Header(){
 
     const location=useLocation();
+    const [windowWidth, setWindowWidth] = React.useState(0);
+      const [isOpen, setIsOpen] = React.useState(false);
+    
+
+    React.useEffect(() => {
+    const changeHeight = () => {
+        setWindowWidth(window.innerWidth );
+        console.log("width changed");
+    };
+
+    window.addEventListener("resize", changeHeight);
+
+    // Call once on mount to set initial height
+    changeHeight();
+
+    // Return a function to remove listener on unmount
+    return () => {
+        window.removeEventListener("resize", changeHeight);
+    };
+    }, []);
+
+
+
     const style={
         color:"black",
         textDecoration:"none",
     }
     return(
         <div className="header">
-            <div className="header-links">
+            { windowWidth>600 ? <div className="header-links">
+                
                 <NavLink
                     to="."
                     className="navLink"
@@ -32,7 +56,10 @@ export default function Header(){
                     style={ ({isActive}) => isActive ? style : null } 
                     >about
                 </NavLink>
+    
             </div>
+                : <Hamburgers />
+            }
             <div className="header-buttons">
                 <NavLink
                     to="/login"

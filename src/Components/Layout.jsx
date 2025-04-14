@@ -7,6 +7,9 @@ export default function Layout(){
     return(
         <>
             <Header />
+            <div className="header-space">
+            
+            </div>
             <Outlet />
             <Footer />
         </>

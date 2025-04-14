@@ -11,8 +11,8 @@
   /*--beige:rgb(255, 212, 192);/*/
   --beige:white;
 
-  --brown:#8B5E3B;
-  --darkbrown:#3E2723;
+  --brown:rgb(140, 140, 140);
+  --darkbrown:black;
   --green:#50862c;
 
 }
@@ -21,6 +21,7 @@ html{
   font-style: normal;
 }
 
+
 body , .root{
   width:100%;
   margin: 0px;
@@ -28,18 +29,23 @@ body , .root{
 }
 .header{
   display: flex;
-  border:solid rgb(65, 65, 65) 0px;
+  border:solid 1px rgb(140 , 140, 140) ;
   width:100%;
-  position:relative;
+  position:fixed;
+  top:0px;
   margin :0px;
   padding:0px;  
   height:80px;
   align-items: center;
   justify-content: space-between;
-  -webkit-box-shadow: 0px 0px 26px -1px rgba(117,72,66,1);
--moz-box-shadow: 0px 0px 26px -1px rgba(117,72,66,1);
-box-shadow: 0px 0px 26px -1px rgba(117,72,66,1);
+  background-color: white;
+  z-index:100;
 
+
+}
+.header-space{
+  width:100%;
+  height:80px;
 }
 .header-links{
   margin-left: 20px;;
@@ -82,7 +88,7 @@ box-shadow: 0px 0px 26px -1px rgba(117,72,66,1);
 .all-title{
   display: flex;
   justify-content: center;
-  margin-top: 50px;
+  margin-top: 60px;
 
 }
 .title{
@@ -90,10 +96,15 @@ box-shadow: 0px 0px 26px -1px rgba(117,72,66,1);
   margin-top:50px;
 }
 .image-title{
-  width:400px;
-  height:400px;
+  width:30%;
+  min-width: 250px;;
   border-radius: 50%;;
 }
+.title-buttons-container{
+  display: flex;
+  gap:20px;
+}
+
 .name{
   color:var(--green);
   font-weight: 900;
@@ -111,11 +122,18 @@ box-shadow: 0px 0px 26px -1px rgba(117,72,66,1);
   background-color: var(--beige);
   border:solid 1px var(--darkbrown);
   border-radius: 5px;
-  margin-right:20px;
+  
   height:40px;
   width:110px;
   cursor:pointer;
   font-size: 0.9rem;
+}
+button{
+  cursor:pointer;
+
+}
+button:active{
+  opacity:0.7;
 }
 .button-sec-type{
   background-color: var(--green);
@@ -137,28 +155,36 @@ box-shadow: 0px 0px 26px -1px rgba(117,72,66,1);
   flex-direction: column;
 }
 .card{
-  background-color:var(--brown) ;
+  background-color:white ;
   display: flex;
   flex-direction: column;
   border-radius:8px ;
-  padding:5px;
-  -webkit-box-shadow: 0px 0px 26px -1px rgba(117,72,66,1);
-  -moz-box-shadow: 0px 0px 26px -1px rgba(117,72,66,1);
-  box-shadow: 0px 0px 26px -1px rgba(117,72,66,1);
+  padding:2px;
+  -webkit-box-shadow: 0px 14px 27px -4px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 14px 27px -4px rgba(0,0,0,0.75);
+  box-shadow: 0px 14px 27px -4px rgba(0,0,0,0.75);
   margin: 40px 30px;
   width:250px;
+  padding-bottom: 20px;
+}
+img{
+  padding:0px;
+  margin:0px;
+  border-radius: 8px;
 }
 
 .card-desc{
-  color:var(--beige);
+  color:black;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 .cards-container{
   width:90%;
   margin: auto;
   display: flex;
   flex-wrap: wrap;
-  align-content:space-around  ;
-  justify-content: start;
+  align-content:center  ;
+  justify-content: space-between;
   margin-bottom: 50px;
   max-width: 1000px;;
   
@@ -233,10 +259,12 @@ select{
   padding:10px;
   border-radius:8px;
   background-color: var(--beige);
-  border: solid 1px var(--darkbrown)
+  border: solid 1px var(--darkbrown);
+  cursor:pointer;
 }
 select:hover{
-  border-width:2px;
+  border-width:3px;
+  
 }
 .shop{
   padding-top:50px;
@@ -317,5 +345,53 @@ input{
 }
 .return-link{
   margin:10px;
+  
+}
+
+@media(max-width:800px){
+  .all-title{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .title{
+    display: flex;
+    flex-direction: column;
+    margin-right: 0px;
+    margin: auto;
+    margin-bottom: 40px;
+    justify-content: center;
+    align-items: center;
+  }
+  .cards-container{
+    justify-content: center;
+  }
+}
+
+
+
+
+.hamburger .hamburger-inner {
+  margin-left:15px; ;
+}
+.hamburger-header-links{
+  display: flex;
+  flex-direction: column;
+  background-color: white ;
+  justify-self: center;
+  align-self: center;
+  margin-top: 50px;;
+
+}
+nav{
+  display: flex;
+  flex-direction: row-reverse;
+  background-color: white;  
+  justify-content: flex-end;
+  transform:translateX(-70px) ;
+  height:70px;
+  transition: background-color 0.3s ease ,height 0.3s ease, transform 0.5s ;
+  width:160px;
+  padding: 0px 10px;
   
 }
