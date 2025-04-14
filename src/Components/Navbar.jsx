@@ -1,9 +1,23 @@
 import React from "react"
 import {NavLink,BrowserRouter, useLocation} from "react-router-dom" 
-import Hamburgers from './HamburgerButton.jsx';
+import SideBar from './SideBar.jsx';
 
+export default function Navbar(){
 
-export default function Header(){
+    const links=[
+        {
+            path:".",
+            name:"Home"
+        },
+        {
+            path:"shop",
+            name:"Shop"
+        },
+        {
+            path:"about",
+            name:"About"
+        },
+    ]
 
     const location=useLocation();
     const [windowWidth, setWindowWidth] = React.useState(0);
@@ -34,8 +48,8 @@ export default function Header(){
         textDecoration:"none",
     }
     return(
-        <div className="header">
-            { windowWidth>600 ? <div className="header-links">
+        <div className="navbar">
+            { windowWidth>600 ? <div className="navbar-links">
                 
                 <NavLink
                     to="."
@@ -58,9 +72,9 @@ export default function Header(){
                 </NavLink>
     
             </div>
-                : <Hamburgers />
+                : <SideBar links={links}/>
             }
-            <div className="header-buttons">
+            <div className="navbar-buttons">
                 <NavLink
                     to="/login"
                     className="log-in"

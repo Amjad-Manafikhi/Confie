@@ -4,7 +4,7 @@ export default function Card({ imgSrc ,price ,description , name}){
    
     return (
         <div className="card"> 
-            <img src={photo} alt={name} width="250px" height="220px" />
+            <img src={photo} alt={name} className="card-img"     />
             <h3 className="card-desc">{name}</h3>
             <p className="card-desc">{description}</p>
 

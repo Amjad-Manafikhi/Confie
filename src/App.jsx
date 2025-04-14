@@ -2,7 +2,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import Header from './Components/Header.jsx';
+import Navbar from './Components/Navbar.jsx';
 import { Routes, Route, NavLink } from "react-router-dom"
 import Home from './Components/Home.jsx';
 import Footer from './Components/Footer.jsx';
@@ -51,7 +51,7 @@ export default function App() {
       name: "White Lamp",
       description: "this is a comfortable good quality lamp",
       type: "lamp"
-    }
+    } 
     ,
     {
       id:5,
@@ -84,7 +84,7 @@ export default function App() {
     <>
       <Routes >
         <Route  path='/dashboard' element={<DashboardLayout/>}>
-         <Route index element={<Products products={products}/>}/>
+         <Route path='products' element={<Products products={products}/>}/>
          <Route path="analytics" element={<Analytics />}/>
          <Route path="generalInfo" element={<GeneralInfo />}/>
         </Route>

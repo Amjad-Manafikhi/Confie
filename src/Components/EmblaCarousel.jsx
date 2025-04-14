@@ -48,14 +48,6 @@ const EmblaCarousel = ({ products }) => {
         ))}
       </div>
       <div className="embla__buttons">
-        <div>
-        <button className="embla__prev" onClick={scrollPrev}>
-          &lt;
-        </button>
-        <button className="embla__next" onClick={scrollNext}>
-          &gt;
-        </button>
-        </div>
         <div className="embla__dots">
             {scrollSnaps.map((_, index) => (
               <DotButton
@@ -66,6 +58,14 @@ const EmblaCarousel = ({ products }) => {
               )}
               />
             ))}
+          </div>
+          <div>
+          <button className="embla__prev" onClick={scrollPrev}>
+            &lt;
+          </button>
+          <button className="embla__next" onClick={scrollNext}>
+            &gt;
+          </button>
           </div>
         </div>
     </div>
