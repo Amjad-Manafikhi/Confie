@@ -27,7 +27,6 @@ export default function Navbar(){
     React.useEffect(() => {
     const changeHeight = () => {
         setWindowWidth(window.innerWidth );
-        console.log("width changed");
     };
 
     window.addEventListener("resize", changeHeight);

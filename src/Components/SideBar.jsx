@@ -12,11 +12,12 @@ export default function SideBar({links}) {
     textDecoration:"none",
 }
 const navStyle={
-    height:"1000vh",
+    height:"100%",
     transform:"translateX(-1px)  translateY(-1px) " ,
     border:"solid 1px black",
     backgroundColor:"rgb(250,250,250)",
-    boxShadow:" 0 2px 5px rgba(0,0,0,0.2)"
+    boxShadow:" 0 2px 5px rgba(0,0,0,0.2)",
+    position:"fixed"
     
 }
 const hamStyle={
@@ -42,7 +43,6 @@ function handleHamburger(){
 }
 
 
-    console.log(open);
   return (
     <nav style={isOpen ? navStyle : null}>
         

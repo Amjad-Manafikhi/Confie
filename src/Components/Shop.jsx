@@ -79,8 +79,6 @@ export default function Shop({products}){
                 className="cards-container"
                 duration={500}
                 staggerDurationBy={0}
-                onStart={() => console.log("Animation started")}
-                onFinish={() => console.log("Animation finished")}
             >
                 {elementProducts}       
             </FlipMove> 

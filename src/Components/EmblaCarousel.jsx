@@ -16,7 +16,6 @@ const EmblaCarousel = ({ products }) => {
 
   useEffect(() => {
     if (emblaApi) {
-      console.log("Embla initialized:", emblaApi);
     }
   }, [emblaApi]);
 

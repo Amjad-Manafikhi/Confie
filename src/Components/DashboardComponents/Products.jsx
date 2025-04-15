@@ -2,6 +2,8 @@ import React from "react"
 import Card from './../card.jsx';
 import { useSearchParams, useNavigate, useLocation } from "react-router-dom";
 import FlipMove from 'react-flip-move';
+import AddProduct from './AddProduct.jsx';
+
 export default function Products({ products }) {
     const [stateProducts, setStateProducts] = React.useState(products);
     const [searchParams, setSearchParams] = useSearchParams();
@@ -33,7 +35,6 @@ export default function Products({ products }) {
         newSearchParams.set("type", type);
         setSearchParams(newSearchParams);
     }
-    console.log(stateProducts)
     const s = "White sofa";
 
 
@@ -92,7 +93,6 @@ export default function Products({ products }) {
         });
     }
 
-    console.log(stateProducts);
     const style = {
         borderColor: "red"
     }
@@ -110,8 +110,6 @@ export default function Products({ products }) {
                     className="cards-container"
                     duration={500}
                     staggerDurationBy={30}
-                    onStart={() => console.log("Animation started")}
-                    onFinish={() => console.log("Animation finished")}
                 >
                     <div className="sub-shop">
                         <h1 className="filter-name">Filters</h1>
@@ -134,6 +132,7 @@ export default function Products({ products }) {
                     {elementProducts}
                 </FlipMove>
             </div>
+            <AddProduct products={products}/>
         </>
     )
 }
