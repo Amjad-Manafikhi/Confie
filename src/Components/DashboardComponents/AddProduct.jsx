@@ -36,7 +36,6 @@ export default function AddProduct({ stateProducts, setStateProducts}){
             alert("Please fill in all required fields.");
             return;
         }
-        console.log(newProdValues);
         setStateProducts(prev => [...prev, newProdValues]);
         setSubmited(false);
 
@@ -64,9 +63,9 @@ export default function AddProduct({ stateProducts, setStateProducts}){
         <FloatingModal isOpen={isOpen} setIsOpen={setIsOpen}>
 
             <form 
-            name="addProds" 
-            className="add-prods"
-            onSubmit={submitProduct} 
+                name="addProds" 
+                className="add-prods"
+                onSubmit={submitProduct} 
             >
                 <h2>Add Product</h2>
                 <label htmlFor="name">name</label>

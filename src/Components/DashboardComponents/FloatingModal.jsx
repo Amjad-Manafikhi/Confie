@@ -2,7 +2,7 @@ import React from "react"
 import { MdVisibility } from "react-icons/md";
 
 
-export default function AddProduct({children, isOpen, setIsOpen}){
+export default function FloatingModal({children, isOpen, setIsOpen}){
         
     
     const [shouldRender, setShouldRender] = React.useState(false);
@@ -18,9 +18,25 @@ export default function AddProduct({children, isOpen, setIsOpen}){
       
         return () => clearTimeout(timeout);
       }, [isOpen]);
+
+      
       
 
-    
+      React.useEffect(() => {
+        if(!isOpen)return
+
+        function handleEsc(event) {
+          if (event.key === "Escape") {
+            setIsOpen(false);
+          }
+        }
+      
+        window.addEventListener("keydown", handleEsc);
+      
+        return () => {
+          window.removeEventListener("keydown", handleEsc);
+        };
+      }, [isOpen]);
 
     
 

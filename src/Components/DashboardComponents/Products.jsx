@@ -1,6 +1,6 @@
 import React from "react"
 import Card from './../card.jsx';
-import { useSearchParams, useNavigate, useLocation } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import FlipMove from 'react-flip-move';
 import AddProduct from './AddProduct.jsx';
 import ToBeSureToDel from "./ToBeSureToDel.jsx";
@@ -9,7 +9,6 @@ import ToBeSureToEdit from "./ToBeSureToEdit.jsx";
 export default function Products({ products }) {
     const [stateProducts, setStateProducts] = React.useState(products);
     const [searchParams, setSearchParams] = useSearchParams();
-    const [submited, setSubmited] = React.useState(false);  
     const [deleteIsOpen, setDeleteIsOpen] = React.useState(false);
     const [deleteProd, setDeleteProd] = React.useState(false);
     const [deleteTargetId, setDeleteTargetId] = React.useState(null); 
@@ -22,14 +21,12 @@ export default function Products({ products }) {
         name: "",
         description: "",
         type: "",
-        id: Date.now()
+        id:-1
     });
 
     const initialPrice = searchParams.get("price") || "price";
     const initialType = searchParams.get("type") || "type";
 
-    const navigate = useNavigate();
-    const location = useLocation();
 
     function changePrice(event) {
         const price = event.target.value;
@@ -43,7 +40,6 @@ export default function Products({ products }) {
         newSearchParams.set("type", type);
         setSearchParams(newSearchParams);
     }
-    const s = "White sofa";
 
 
     const filteredProducts =
@@ -63,10 +59,11 @@ export default function Products({ products }) {
         setDeleteTargetId(id);
     }
     function handleEdit(id){
+        setNewProdValues(stateProducts.find(prod => prod.id===id ))
         setEditIsOpen(true);
         setEditTargetId(id);
     }
-            
+
     React.useEffect(()=>{
         if(deleteProd){
             const id=deleteTargetId;
@@ -74,17 +71,20 @@ export default function Products({ products }) {
             return  prev.filter(product => product.id!==id )
             }
         )}
-        setDeleteProd(null);
+        setDeleteProd(false);
     },[deleteProd])
 
     React.useEffect(()=>{
         if(editProd){
             const id=editTargetId;
-            setStateProducts( prev =>{
-            return  prev.filter(product => product.id!==id )
-            }
-        )}
-        setEditProd(null);
+            setStateProducts(prev =>
+                prev.map(product =>
+                  product.id === id ? newProdValues : product
+                )
+              );
+                          
+        }
+        setEditProd(false);
     },[editProd])
 
 
@@ -142,7 +142,7 @@ export default function Products({ products }) {
                 stateProducts={stateProducts}
                 setStateProducts={setStateProducts}
             />
-            <ToBeSureToDel 
+             <ToBeSureToDel 
                 deleteIsOpen={deleteIsOpen} 
                 setDeleteProd={setDeleteProd} 
                 setDeleteIsOpen={setDeleteIsOpen} 
@@ -151,6 +151,9 @@ export default function Products({ products }) {
                 editIsOpen={editIsOpen} 
                 setEditProd={setEditProd} 
                 setEditIsOpen={setEditIsOpen} 
+                newProdValues={newProdValues}
+                setNewProdValues={setNewProdValues}
+                setIsOpen={setEditIsOpen}
             />
         </>
     )

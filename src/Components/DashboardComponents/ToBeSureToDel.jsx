@@ -9,7 +9,7 @@ export default function ToBeSureToDel({deleteIsOpen,  setDeleteProd, setDeleteIs
         
     }
     return (
-        <FLoatingModal isOpen={deleteIsOpen} setIsOpen={ () => {}}>
+        <FLoatingModal isOpen={deleteIsOpen} setIsOpen={setDeleteIsOpen }>
             <div className="delete-warning">
                 <h4 className="delete-message">Once data is deleted, it cannot be recovered ⚠️</h4>
                 <h4 className="delete-message" style={{color:"black "}}>Delete the product?</h4>
