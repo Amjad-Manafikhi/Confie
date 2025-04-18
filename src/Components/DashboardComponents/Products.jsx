@@ -3,11 +3,19 @@ import Card from './../card.jsx';
 import { useSearchParams, useNavigate, useLocation } from "react-router-dom";
 import FlipMove from 'react-flip-move';
 import AddProduct from './AddProduct.jsx';
+import ToBeSureToDel from "./ToBeSureToDel.jsx";
+import ToBeSureToEdit from "./ToBeSureToEdit.jsx";
 
 export default function Products({ products }) {
     const [stateProducts, setStateProducts] = React.useState(products);
     const [searchParams, setSearchParams] = useSearchParams();
-    const [submited, setSubmited] = React.useState(false)
+    const [submited, setSubmited] = React.useState(false);  
+    const [deleteIsOpen, setDeleteIsOpen] = React.useState(false);
+    const [deleteProd, setDeleteProd] = React.useState(false);
+    const [deleteTargetId, setDeleteTargetId] = React.useState(null); 
+    const [editIsOpen, setEditIsOpen] = React.useState(false);
+    const [editProd, setEditProd] = React.useState(false);
+    const [editTargetId, setEditTargetId] = React.useState(null); 
     const [newProdValues, setNewProdValues] = React.useState({
         imgSrc: './../HomeImage.jpg',
         price: "",
@@ -50,53 +58,50 @@ export default function Products({ products }) {
     if (initialPrice === "HtoL") {
         sortedProducts = [...filteredProducts].reverse();
     }
+    function handleDelete (id){
+        setDeleteIsOpen(true);
+        setDeleteTargetId(id);
+    }
+    function handleEdit(id){
+        setEditIsOpen(true);
+        setEditTargetId(id);
+    }
+            
+    React.useEffect(()=>{
+        if(deleteProd){
+            const id=deleteTargetId;
+            setStateProducts( prev =>{
+            return  prev.filter(product => product.id!==id )
+            }
+        )}
+        setDeleteProd(null);
+    },[deleteProd])
+
+    React.useEffect(()=>{
+        if(editProd){
+            const id=editTargetId;
+            setStateProducts( prev =>{
+            return  prev.filter(product => product.id!==id )
+            }
+        )}
+        setEditProd(null);
+    },[editProd])
+
+
+
     const elementProducts = sortedProducts.map((product) => (
         <div key={product.id}>
             <Card
+                handleDelete={handleDelete}
+                handleEdit={handleEdit}
                 imgSrc={product.imgSrc}
                 price={product.price}
                 name={product.name}
                 description={product.description}
+                id={product.id}
             />
         </div>
     ));
-
-
-
-    function changeProdValues(event) {
-        event.preventDefault();
-        setNewProdValues(prev => ({
-            ...prev,
-            [event.target.id]: event.target.value
-        }));
-    }
-
-    function submitProduct(event) {
-        event.preventDefault(); // stop page reload
-        setSubmited(true);
-        // Optional: validate data
-        if (!newProdValues.name || !newProdValues.price || !newProdValues.imgSrc || !newProdValues.type) {
-            alert("Please fill in all required fields.");
-            return;
-        }
-        setSubmited(false);
-
-        setStateProducts(prev => [...prev, newProdValues]);
-
-        // Clear the form after submission
-        setNewProdValues({
-            imgSrc: "./../HomeImage.jpg",
-            price: "",
-            name: "",
-            description: "",
-            type: ""
-        });
-    }
-
-    const style = {
-        borderColor: "red"
-    }
-
 
 
 
@@ -129,10 +134,24 @@ export default function Products({ products }) {
                             </select>
                         </form>
                     </div>
+                    
                     {elementProducts}
                 </FlipMove>
             </div>
-            <AddProduct products={products}/>
+            <AddProduct 
+                stateProducts={stateProducts}
+                setStateProducts={setStateProducts}
+            />
+            <ToBeSureToDel 
+                deleteIsOpen={deleteIsOpen} 
+                setDeleteProd={setDeleteProd} 
+                setDeleteIsOpen={setDeleteIsOpen} 
+            />
+            <ToBeSureToEdit 
+                editIsOpen={editIsOpen} 
+                setEditProd={setEditProd} 
+                setEditIsOpen={setEditIsOpen} 
+            />
         </>
     )
 }

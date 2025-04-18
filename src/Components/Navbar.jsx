@@ -40,7 +40,18 @@ export default function Navbar(){
     };
     }, []);
 
-
+    const LinkElemnets = links.map((link)=>{
+        return(
+            <NavLink
+                key={link.name}
+                to={link.path}
+                className="navLink"
+                style={ ({isActive}) => isActive ? style : null } 
+                >{link.name}
+            </NavLink>
+    
+        )
+    })
 
     const style={
         color:"black",
@@ -50,30 +61,13 @@ export default function Navbar(){
         <div className="navbar">
             { windowWidth>600 ? <div className="navbar-links">
                 
-                <NavLink
-                    to="."
-                    className="navLink"
-                    style={ ({isActive}) => isActive ? style : null } 
-                >Home
-                </NavLink>
-                <NavLink
-                    to="/shop"
-                    className="navLink"
-                    style={ ({isActive}) => isActive ? style : null } 
-                >Shop
-                </NavLink>
-                
-                <NavLink
-                    to="/about"
-                    className="navLink"
-                    style={ ({isActive}) => isActive ? style : null } 
-                    >about
-                </NavLink>
+                {LinkElemnets}
     
             </div>
                 : <SideBar links={links}/>
             }
             <div className="navbar-buttons">
+                
                 <NavLink
                     to="/login"
                     className="log-in"

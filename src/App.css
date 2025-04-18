@@ -36,7 +36,7 @@ body , .root{
   top:0px;
   margin :0px;
   padding:0px;  
-  height:80px;
+  height:70px;
   align-items: center;
   justify-content: space-between;
   background-color: white;
@@ -257,6 +257,7 @@ h1{
   font-weight:800;
 }
 select{
+  margin-top: 10px;
   margin-right:20px;
   width:140px;
   height:45px;
@@ -336,19 +337,23 @@ dialog{
   padding:0px;
   max-width: 500px;;
   box-sizing: border-box;
-  border-radius: 10px;
   inset:0;
+  border-radius: 10px;;
+  border:solid 2px rgb(140,140,140);
+  background-color: transparent;
   
   
 
 }
 .addProduct{
+  color:white;
+  font-size: 1.5rem;
   position: fixed;
   bottom: 0;
   right:0;
   margin:30px;
   background-color: var(--green);
-  border:solid 2px black;
+  border:none;
   border-radius: 50%;;
   width:40px;
   height:40px;
@@ -360,7 +365,7 @@ dialog{
   position:fixed;
   z-index:100;
   bottom:0;
-  transition: background-Color 0.5s ease;
+  transition: all 0.5s ease;
 }
 
 @keyframes scaleUp {
@@ -461,16 +466,22 @@ dialog{
   }
 }
 
+.hamburger .hamburger-inner,
+.hamburger .hamburger-inner::before,
+.hamburger .hamburger-inner::after {
+  width: 35px;
+  
+}
+
+.hamburger .hamburger-inner {
+  margin-left: 15px;
+}
+
 /* ============================= */
 /* ============================= */
 /* =========== Navbar ========== */
 /* ============================= */
 /* ============================= */
-
-
-.hamburger .hamburger-inner {
-  margin-left:15px; ;
-}
 .hamburger-links{
   display: flex;
   flex-direction: column;
@@ -495,8 +506,54 @@ nav {
   padding-right:10px ;
   
 }
+.card-buttons{
+  margin-left:auto;
+}
+.delete-button{
+  width:25px;
+  height:25px;
+  color:red;
+  margin-left: auto;;
+}
+.edit-button{
+  width:24px;
+  height:24px;
+  
+}
 
+.delete-warning{
+  background-color: white;
+  opacity:0.9;
+  width:100%;
+  border-radius: 8px;;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding:10px;
+}
+.delete-message{
+  margin:6px;
+  color: red;
+}
 
+.yes, .no{
+  width:80px;
+  height:30px;
+  border:solid 1px white;
+  border-radius:10px ;
+  color: white;
+
+}
+.no{
+  background-color: var(--green);
+  margin: 5px;
+}
+.yes{
+  background-color: red;
+  margin: 5px;;
+}
 
 
 
