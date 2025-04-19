@@ -29,6 +29,10 @@ export default function Home({products}){
                 <h2 className="best-selling-title">Best Selling</h2>
                 <EmblaCarousel products={products} />
             </div>
+            <div className="about">
+                <h2 className="about-title">About Us</h2>
+                <p className="about-desc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum placeat exercitationem quas quasi itaque error a perspiciatis eos temporibus nemo tenetur, quaerat ipsam mollitia, possimus autem aliquid? Harum, doloribus ex. dolores dolor eum eveniet! Sed esse ad itaque Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis delectus, ad perferendis assumenda voluptas vero nemo aliquam architecto porro in commodi, deleniti, consequatur quaerat voluptatum laborum voluptates quidem. Perferendis, sequi! aspernatur accusamus iure commodi cupiditate sapiente officia repudiandae. Nostrum numquam voluptate eos nam?</p>
+                 </div>
         </>
 
     )

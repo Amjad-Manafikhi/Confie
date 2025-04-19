@@ -357,6 +357,9 @@ dialog{
   border-radius: 50%;;
   width:40px;
   height:40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .dialog-full-screen{
   width:100%;
@@ -553,6 +556,20 @@ nav {
 .yes{
   background-color: red;
   margin: 5px;;
+}
+.about{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width:60%;
+  margin:auto;
+  margin-top:100px;
+}
+.about-desc{
+  margin-bottom: 100px;;
+  font-size: 1rem;;
+  line-height: 25px;;
 }
 
 
