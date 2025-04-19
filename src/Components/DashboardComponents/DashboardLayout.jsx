@@ -16,6 +16,10 @@ export default function DashboardLayout(){
             path:"/dashboard/generalInfo",
             name:"General Info"
         },
+        {
+            path:"/",
+            name:"← back home"
+        },
     ]
     return (
         <div>

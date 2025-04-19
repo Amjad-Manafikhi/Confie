@@ -488,7 +488,7 @@ dialog{
 .hamburger-links{
   display: flex;
   flex-direction: column;
-  background-color: white ;
+  background-color: transparent;
   
 
 }
@@ -497,16 +497,17 @@ nav {
   position:fixed;
   top: 0;          
   left: 0;
-  transform: translateX(-115px); 
-  width: 180px;
+  transform: translateX(-135px); 
+  width: 200px;
   height: auto;
   z-index: 99;
   display: flex;
   align-items: flex-start;
   flex-direction: row-reverse;
-  transition: all 0.5s ease;
+  transition: transform 0.5s ease,  height 0.5s ease;
   padding-top: 10px;;
   padding-right:10px ;
+  background-color: transparent;
   
 }
 .card-buttons{
