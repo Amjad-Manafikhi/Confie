@@ -47,7 +47,6 @@
 - **FlipMove** for animating list changes
 - **Embla Carousel** for responsive sliders
 - **Custom CSS** for styling 
-- **Vite** (assumed, if you used it for fast dev server)
 
 ---
 
